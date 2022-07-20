@@ -21,10 +21,10 @@ jobs:
         run: dotnet restore Ordering.sln
       - name: Build
         run: dotnet build Ordering.sln --no-restore
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: OrderingService
+      # - name: Download artifact
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: OrderingService
   test:
     name: test
     runs-on: ubuntu-latest
