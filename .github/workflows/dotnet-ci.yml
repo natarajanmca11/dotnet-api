@@ -36,7 +36,7 @@ jobs:
         with:
           dotnet-version: 6.0.x
       - name: Restore dependencies
-        run: dotnet restore Ordering.Test.sln
+        run: dotnet restore Ordering.sln && dotnet restore Ordering.Test.sln
       - name: Test
         run: dotnet test Ordering.Test.sln --no-build --verbosity normal
   docker:
