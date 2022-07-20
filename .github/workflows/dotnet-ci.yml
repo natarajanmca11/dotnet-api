@@ -38,7 +38,7 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore Ordering.sln && dotnet restore Ordering.Test.sln
       - name: Test
-        run: dotnet test Ordering.Test.sln --no-build --verbosity normal
+        run: dotnet test Ordering.Test.sln --verbosity normal
   docker:
     name: docker
     needs: [build, test]
