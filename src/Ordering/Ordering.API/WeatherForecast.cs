@@ -1,6 +1,6 @@
 namespace Ordering.API;
 
-public class WeatherForecast
+public class OrderingModel
 {
     public DateTime Date { get; set; }
 
