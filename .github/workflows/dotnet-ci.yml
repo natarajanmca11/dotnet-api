@@ -18,7 +18,7 @@ jobs:
         with:
           dotnet-version: 6.0.x
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore Ordering.sln
       - name: Build
         run: dotnet build Ordering.sln --no-restore
       - name: Download artifact
