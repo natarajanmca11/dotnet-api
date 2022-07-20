@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: build
+    name: Build Dotnet Application
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +26,7 @@ jobs:
       #   with:
       #     name: OrderingService
   test:
-    name: test
+    name: Run Unit Test
     runs-on: ubuntu-latest
     needs: [build]
     steps:
@@ -40,7 +40,8 @@ jobs:
       - name: Test
         run: dotnet test Ordering.Test.sln --verbosity normal
   docker:
-    name: docker
+    # https://github.com/marketplace/actions/build-and-push-docker-images#path-context
+    name: Create and push Docker image
     needs: [build, test]
     runs-on: ubuntu-latest
     steps:
@@ -51,8 +52,11 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          # username: ${{ secrets.DOCKERHUB_USERNAME }}
+          # password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
