@@ -16,7 +16,7 @@ jobs:
         with:
           distribution: "microsoft"
           java-version: 11
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3.1.0
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - name: Cache SonarQube packages
@@ -52,7 +52,7 @@ jobs:
     needs: [sast]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.1.0
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
@@ -70,7 +70,7 @@ jobs:
     needs: [sast]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.1.0
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
